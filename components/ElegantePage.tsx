@@ -100,6 +100,8 @@ function BeatText({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
+        alignItems: 'center',
+        textAlign: 'center',
         paddingBottom: 'clamp(2.5rem, 8vw, 5rem)',
         paddingLeft: 'clamp(1.5rem, 6vw, 5rem)',
         paddingRight: 'clamp(1.5rem, 6vw, 5rem)',
@@ -107,7 +109,7 @@ function BeatText({
       }}
     >
       {/* Beat tag */}
-      <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
+      <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.75rem', marginBottom: '1.5rem' }}>
         <div style={{ height: '1px', width: '2.5rem', backgroundColor: 'rgba(201,169,110,0.5)' }} />
         <span
           style={{
@@ -120,6 +122,7 @@ function BeatText({
         >
           {beat.tag}
         </span>
+        <div style={{ height: '1px', width: '2.5rem', backgroundColor: 'rgba(201,169,110,0.5)' }} />
       </div>
 
       {/* Title */}
@@ -132,7 +135,7 @@ function BeatText({
           fontSize: 'clamp(3.5rem, 8vw, 7rem)',
           letterSpacing: '-0.04em',
           color: '#ffffff',
-          textShadow: '0 0 120px rgba(0,0,0,0.9)',
+          textShadow: '0 4px 24px rgba(0,0,0,0.8)',
         }}
       >
         {beat.title}
@@ -178,9 +181,9 @@ function BookButton() {
         letterSpacing: '0.25em',
         textTransform: 'uppercase',
         fontWeight: 600,
-        border: '1px solid rgba(201,169,110,0.6)',
-        color: hovered ? '#050505' : '#c9a96e',
-        backgroundColor: hovered ? '#c9a96e' : 'transparent',
+        border: '1px solid #c9a96e',
+        color: hovered ? '#ffffff' : '#050505',
+        backgroundColor: hovered ? '#b3955b' : '#c9a96e',
         cursor: 'pointer',
         transition: 'all 0.35s cubic-bezier(0.76, 0, 0.24, 1)',
         fontFamily: 'inherit',
@@ -339,11 +342,19 @@ export default function ElegantePage() {
 
   // Scroll handler
   useEffect(() => {
+    let ticking = false;
     const handleScroll = () => {
-      const el = containerRef.current;
-      if (!el) return;
-      const maxScroll = el.scrollHeight - window.innerHeight;
-      setScrollProgress(maxScroll > 0 ? Math.min(1, window.scrollY / maxScroll) : 0);
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const el = containerRef.current;
+          if (el) {
+            const maxScroll = el.scrollHeight - window.innerHeight;
+            setScrollProgress(maxScroll > 0 ? Math.min(1, window.scrollY / maxScroll) : 0);
+          }
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });

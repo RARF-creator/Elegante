@@ -58,11 +58,13 @@ const AntigravityCanvas = forwardRef<AntigravityCanvasHandle, AntigravityCanvasP
         const img = images[idx];
         if (!img || !img.complete || img.naturalWidth === 0) return;
 
-        // object-fit: cover — fills the entire canvas, no black bars
-        const scale = Math.max(
+        // object-fit: cover for desktop, slightly smaller for mobile to fit cup
+        const isMobile = canvas.width < 768;
+        const baseScale = Math.max(
           canvas.width / img.naturalWidth,
           canvas.height / img.naturalHeight
         );
+        const scale = isMobile ? baseScale * 0.65 : baseScale;
         const drawW = img.naturalWidth * scale;
         const drawH = img.naturalHeight * scale;
         const drawX = (canvas.width - drawW) / 2;
