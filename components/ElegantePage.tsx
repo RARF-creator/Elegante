@@ -304,6 +304,45 @@ function ScrollIndicator({ scrollProgress }: { scrollProgress: number }) {
 }
 
 
+function TopScrollIndicator({ scrollProgress }: { scrollProgress: number }) {
+  const showHint = scrollProgress < 0.04;
+
+  return (
+    <AnimatePresence>
+      {showHint && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.6 }}
+          style={{
+            position: 'fixed',
+            top: '5rem',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            zIndex: 50,
+            pointerEvents: 'none',
+          }}
+        >
+          <span
+            style={{
+              fontSize: '0.65rem',
+              letterSpacing: '0.25em',
+              textTransform: 'uppercase',
+              color: 'rgba(255,255,255,0.4)',
+            }}
+          >
+            Scroll Down
+          </span>
+        </motion.div>
+      )}
+    </AnimatePresence>
+  );
+}
+
 // --------------------------------------------------------------------------
 // Main Page
 // --------------------------------------------------------------------------
@@ -380,6 +419,7 @@ export default function ElegantePage() {
         <>
           <NavBar scrollProgress={scrollProgress} />
           <ScrollIndicator scrollProgress={scrollProgress} />
+          <TopScrollIndicator scrollProgress={scrollProgress} />
 
           {/* Beat text overlays */}
           <div
