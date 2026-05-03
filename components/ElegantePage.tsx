@@ -417,11 +417,10 @@ export default function ElegantePage() {
           {/* Edge vignette — covers any bleed/artifact at all four edges */}
           <div
             aria-hidden="true"
+            className="vignette-overlay"
             style={{
               position: 'fixed',
               inset: 0,
-              background:
-                'linear-gradient(to right, #050505 0%, transparent 6%, transparent 94%, #050505 100%)',
               zIndex: 10,
               pointerEvents: 'none',
             }}
