@@ -1,0 +1,34 @@
+@import "tailwindcss";
+
+:root {
+  --void: #050505;
+  --gold: #c9a96e;
+  --gold-light: #e8d5b0;
+  --cream: #f5f0e8;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: auto;
+  background-color: var(--void);
+  overflow-x: hidden;
+  scrollbar-width: none; /* Firefox */
+}
+
+/* Webkit — fully hidden */
+::-webkit-scrollbar {
+  display: none;
+  width: 0;
+}
+
+
+/* Selection styling */
+::selection {
+  background: rgba(201, 169, 110, 0.3);
+  color: white;
+}
