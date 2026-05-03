@@ -100,9 +100,9 @@ function BeatText({
         display: 'flex',
         flexDirection: 'column',
         justifyContent: 'flex-end',
-        paddingBottom: '5rem',
-        paddingLeft: '5rem',
-        paddingRight: '5rem',
+        paddingBottom: 'clamp(2.5rem, 8vw, 5rem)',
+        paddingLeft: 'clamp(1.5rem, 6vw, 5rem)',
+        paddingRight: 'clamp(1.5rem, 6vw, 5rem)',
         pointerEvents: 'none',
       }}
     >
@@ -209,7 +209,7 @@ function NavBar({ scrollProgress }: { scrollProgress: number }) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '1.75rem 3rem',
+        padding: 'clamp(1.25rem, 4vw, 1.75rem) clamp(1.5rem, 6vw, 3rem)',
         opacity: navOpacity,
         background: 'linear-gradient(to bottom, rgba(5,5,5,0.7) 0%, transparent 100%)',
         transition: 'opacity 0.3s ease',

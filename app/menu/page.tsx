@@ -338,7 +338,7 @@ export default function MenuPage() {
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
-          padding: '1.5rem 3rem',
+          padding: 'clamp(1rem, 4vw, 1.5rem) clamp(1.5rem, 6vw, 3rem)',
           background: 'rgba(5,5,5,0.92)',
           backdropFilter: 'blur(16px)',
           borderBottom: '1px solid rgba(255,255,255,0.05)',
@@ -369,7 +369,7 @@ export default function MenuPage() {
       </nav>
 
       {/* ── Hero ───────────────────────────── */}
-      <div style={{ padding: '5rem 3rem 3rem', maxWidth: '1400px', margin: '0 auto' }}>
+      <div style={{ padding: 'clamp(3rem, 10vw, 5rem) clamp(1.5rem, 6vw, 3rem) clamp(2rem, 6vw, 3rem)', maxWidth: '1400px', margin: '0 auto' }}>
         <p
           style={{
             fontSize: '0.7rem',
@@ -414,7 +414,7 @@ export default function MenuPage() {
       {/* ── Category tabs ──────────────────── */}
       <div
         style={{
-          padding: '0 3rem',
+          padding: '0 clamp(1.5rem, 6vw, 3rem)',
           maxWidth: '1400px',
           margin: '0 auto',
           borderBottom: '1px solid rgba(255,255,255,0.06)',
@@ -436,11 +436,11 @@ export default function MenuPage() {
       {/* ── Cards Grid ─────────────────────── */}
       <div
         style={{
-          padding: '0 3rem 8rem',
+          padding: '0 clamp(1.5rem, 6vw, 3rem) clamp(4rem, 12vw, 8rem)',
           maxWidth: '1400px',
           margin: '0 auto',
           display: 'grid',
-          gridTemplateColumns: 'repeat(auto-fill, minmax(320px, 1fr))',
+          gridTemplateColumns: 'repeat(auto-fill, minmax(min(100%, 300px), 1fr))',
           gap: '1px',
           backgroundColor: 'rgba(255,255,255,0.04)',
         }}
@@ -456,7 +456,7 @@ export default function MenuPage() {
       <div
         style={{
           borderTop: '1px solid rgba(255,255,255,0.06)',
-          padding: '2.5rem 3rem',
+          padding: 'clamp(2rem, 6vw, 2.5rem) clamp(1.5rem, 6vw, 3rem)',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between',
